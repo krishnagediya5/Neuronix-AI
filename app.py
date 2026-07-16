@@ -992,7 +992,7 @@ if file is not None:
                     
                     st.session_state.df = df
                     st.dataframe(df.head(), use_container_width=True)
--
+
     # TAB: MODEL TRAINING
     with tab_train:
         st.markdown("""
