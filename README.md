@@ -66,5 +66,6 @@ Want to run Neuronix AI on your local machine? Follow these steps:
 
 **1. Clone the repository:**
 ```bash
-
+git clone [https://github.com/krishnagediya5/Neuronix-AI.git](https://github.com/krishnagediya5/Neuronix-AI.git)
+cd Neuronix-AI
 
