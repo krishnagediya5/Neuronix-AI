@@ -1,63 +1,70 @@
-# 🧠 Neuronix AI - Enterprise AutoML Workspace
+# 🧠 Neuronix AI : Enterprise-Grade AutoML Workspace
 
-![Neuronix AI Hero](https://img.shields.io/badge/Status-Live-success?style=for-the-badge)
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python)
-![Streamlit](https://img.shields.io/badge/Streamlit-1.20%2B-FF4B4B?style=for-the-badge&logo=streamlit)
-![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Scikit--Learn-F7931E?style=for-the-badge)
+<div align="center">
+  <img src="https://img.shields.io/badge/Status-Live-success?style=for-the-badge&logo=vercel" alt="Status" />
+  <img src="https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python" alt="Python Version" />
+  <img src="https://img.shields.io/badge/Framework-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit" alt="Streamlit" />
+  <img src="https://img.shields.io/badge/Machine%20Learning-Scikit--Learn-F7931E?style=for-the-badge&logo=scikit-learn" alt="Machine Learning" />
+  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License" />
+</div>
 
-**Think Smarter. Predict Faster.** 
-Neuronix AI is a next-generation, end-to-end Automated Machine Learning (AutoML) platform. It allows users to seamlessly upload datasets, perform in-depth exploratory data analysis, engineer features, train multiple state-of-the-art ML models, and generate enterprise-grade PDF reports—all without writing a single line of code.
+<br>
 
-🚀 **Live Demo:** [Click Here to Experience Neuronix AI](https://neuronix-krishna.streamlit.app) *(Replace with your actual link)*
+**Think Smarter. Predict Faster.**  
+**Neuronix AI** is a state-of-the-art, end-to-end Automated Machine Learning (AutoML) web platform. It bridges the gap between raw data and actionable AI insights by allowing users to seamlessly profile data, engineer features, train high-performance models, and generate comprehensive PDF reports—all without writing a single line of code.
+
+🚀 **Experience the Live Application:** [Neuronix AI Live Demo](https://neuronix-krishna.streamlit.app) *(Replace with your actual Streamlit link)*
 
 ---
 
-## 🔥 Key Features
+## ✨ Core Features
 
-### 📊 1. Advanced Data Profiling & EDA
-* **Automated Data Quality Check:** Detects data leakage, constant columns, high missing values, and high correlation.
-* **Interactive Visualization:** Generate dynamic histograms, multi-dimensional scatter plots, box plots (outlier detection), and correlation heatmaps powered by Plotly.
-* **Health Score:** Calculates a live dataset health score based on structural integrity.
+### 📊 1. Intelligent Data Profiling & EDA
+* **Automated Data Quality Checks:** Instantly detects data leakage, highly correlated features, constant columns, and missing values.
+* **Interactive Visualizations:** Multi-dimensional scatter plots, distribution histograms, outlier-detection box plots, and correlation heatmaps (powered by *Plotly*).
+* **Dataset Health Scoring:** Generates a real-time health score reflecting the structural integrity of your dataset.
 
-### 🛠️ 2. Intelligent Preprocessing & Feature Engineering
-* **Auto-Imputation:** Handle missing values via Mean, Median, Mode, or Forward/Backward fill.
-* **Encoding & Scaling:** One-click Label Encoding, Standardization, and Normalization.
-* **Feature Engineering:** Instantly create Polynomial, Logarithmic, Square Root, Interaction, and Binned features.
+### 🛠️ 2. Smart Preprocessing & Feature Engineering
+* **Auto-Imputation:** Handles missing data dynamically via Mean, Median, Mode, or Sequence Fills.
+* **Smart Encoding & Scaling:** One-click Categorical Label Encoding, Standardization, and Normalization.
+* **Automated Feature Engineering:** Extracts deep patterns through Polynomials, Logarithmic transformations, Binnings, and Interaction features.
 
-### 🧠 3. Neural Engine (AutoML)
-* **Supervised Learning (Classification & Regression):** Trains 10+ models simultaneously including XGBoost, LightGBM, CatBoost, Random Forest, and SVM.
-* **Unsupervised Learning (Clustering):** Implements K-Means, Agglomerative, and Birch clustering with PCA dimensionality reduction visualization.
-* **Hyperparameter Tuning:** Built-in RandomizedSearchCV for optimal model configuration.
-* **Leaderboard & Auto-Selection:** Automatically ranks models by Accuracy/RMSE and deploys the best one.
+### 🤖 3. The Neural Engine (Model Training)
+* **Multi-Model Pipeline:** Simultaneously trains and compares 10+ algorithms, including **XGBoost, LightGBM, CatBoost, Random Forest,** and **SVM**.
+* **Unsupervised Capabilities:** Implements advanced clustering techniques (K-Means, Agglomerative, Birch) visualized via PCA.
+* **Hyperparameter Tuning:** Built-in `RandomizedSearchCV` for finding optimal model architectures.
+* **Dynamic Leaderboard:** Auto-ranks models based on Accuracy/RMSE and automatically deploys the best-performing model.
 
-### 🔍 4. Explainable AI (XAI) & Evaluation
-* **SHAP Integration:** Global and Local explainability using SHAP Summary and Bar plots. Understand *why* the model made a specific prediction.
-* **Advanced Metrics:** Confusion Matrix, ROC-AUC Curves, Precision-Recall Curves, and Overfitting/Underfitting detection.
+### 🔍 4. Explainable AI (XAI) & Diagnostics
+* **SHAP Integration:** Decodes complex model decisions using Global and Local SHAP (SHapley Additive exPlanations) visualizations.
+* **Overfitting Detector:** Measures the performance variance between training and testing data to ensure robust generalization.
+* **Advanced Metrics:** Confusion Matrices, ROC-AUC Curves, and Precision-Recall evaluation.
 
 ### 📤 5. Enterprise Deployment Features
-* **Bulk/Batch Prediction:** Upload an unseen CSV, and the AI will predict outcomes for thousands of rows instantly.
-* **Download Center:** Export the Best Model (`.pkl`), Production Pipeline, Preprocessed Datasets, and Leaderboard.
-* **PDF Report Generation:** One-click generation of a comprehensive, beautifully formatted PDF report containing EDA charts, stats, and AI recommendations.
-* **Interview Prep & Glossary:** Built-in ML dictionary and interview flashcards for students and professionals.
+* **Bulk Prediction Studio:** Upload an unseen CSV to generate AI predictions for thousands of rows simultaneously.
+* **One-Click Export:** Download your trained Production Pipeline (`.pkl`), Best Model, Preprocessed Dataset, and Leaderboard.
+* **Automated PDF Reports:** Generates a beautifully formatted, comprehensive PDF executive summary of the entire ML workflow via *ReportLab*.
 
 ---
 
 ## 💻 Technology Stack
 
-* **Frontend & Framework:** Streamlit (Custom Premium Dark CSS)
-* **Data Manipulation:** Pandas, NumPy
-* **Machine Learning:** Scikit-learn, XGBoost, LightGBM, CatBoost
-* **Visualizations:** Plotly, Matplotlib
-* **Explainable AI:** SHAP
-* **PDF Generation:** ReportLab
+| Category | Technologies Used |
+| :--- | :--- |
+| **Frontend UI** | Streamlit, Custom Premium CSS |
+| **Data Processing** | Pandas, NumPy |
+| **Machine Learning** | Scikit-Learn, XGBoost, LightGBM, CatBoost |
+| **Data Visualization** | Plotly Express, Matplotlib |
+| **Model Explainability** | SHAP (Shapley Additive exPlanations) |
+| **Document Generation**| ReportLab |
 
 ---
 
-## ⚙️ Local Installation
+## ⚙️ Installation & Local Setup
 
-To run Neuronix AI locally on your machine, follow these steps:
+Want to run Neuronix AI on your local machine? Follow these steps:
 
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/krishnagediya5/Neuronix-AI.git](https://github.com/krishnagediya5/Neuronix-AI.git)
-   cd Neuronix-AI
+**1. Clone the repository:**
+```bash
+git clone [https://github.com/krishnagediya5/Neuronix-AI.git](https://github.com/krishnagediya5/Neuronix-AI.git)
+cd Neuronix-AI
