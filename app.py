@@ -154,7 +154,7 @@ with st.sidebar:
             unsafe_allow_html=True
         )
     except Exception as e:
-        st.image("Neuronix AI/logo.png", use_container_width=True)
+        st.image("logo.png", use_container_width=True)
     st.markdown("<div style='padding: 0px 20px;'>", unsafe_allow_html=True)
     st.markdown("### 🔌 Control Panel")
     st.markdown("---")
