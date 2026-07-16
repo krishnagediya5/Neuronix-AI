@@ -50,14 +50,10 @@ from reportlab.lib import colors
 from reportlab.lib.enums import TA_CENTER
 from datetime import datetime
 
-# =====================================================
 # PAGE CONFIG
-# =====================================================
 st.set_page_config(page_title="Neuronix AI", page_icon="🧠", layout="wide", initial_sidebar_state="expanded")
 
-# =====================================================
 # NEXT-GEN PREMIUM UI STYLE
-# =====================================================
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
@@ -104,13 +100,7 @@ html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
 </style>
 """, unsafe_allow_html=True)
 
-# =====================================================
-# PREMIUM HERO SECTION
-# =====================================================
-
-# =====================================================
 # PREMIUM HERO SECTION (NEURONIX AI LOGO STYLE)
-# =====================================================
 st.markdown("""
 <div style="padding: 45px; border-radius: 25px; background: linear-gradient(135deg, #0f172a, #1e1b4b); border: 1px solid rgba(139, 92, 246, 0.3); box-shadow: 0 20px 50px rgba(0,0,0,.5); margin-bottom: 30px;">
     <h1 style="font-size: 56px; font-weight: 900; margin-bottom: 5px; letter-spacing: -1px;">
@@ -125,7 +115,6 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-
 with st.sidebar:
     st.markdown("""
     <style>
@@ -139,7 +128,6 @@ with st.sidebar:
     </style>
     """, unsafe_allow_html=True)
 
-    # Negative Margins ke sath image ko 100% width par force karna
     try:
         with open("Neuronix AI/logo.png", "rb") as f:
             data = f.read()
@@ -180,9 +168,7 @@ with st.sidebar:
     </div>
     """, unsafe_allow_html=True)
 
-# =====================================================
 # MAIN LOGIC
-# =====================================================
 if file is not None:
     # 1. LOAD DATASET
     if "df" not in st.session_state or st.session_state.get("last_file") != file.name:
@@ -295,9 +281,8 @@ if file is not None:
             <p style="margin: 5px 0; font-size: 13px;">Ready for Export</p>
         </div>
         """, unsafe_allow_html=True)
-    # =====================================================
+ 
     # CREATE TABS
-    # =====================================================
     tab_eda, tab_prep, tab_train, tab_download, tab_history, tab_glossary, tab_interview = st.tabs([
         "📊 Data & Exploration", "🛠️ Preprocessing", "🧠 Model Training", "📥 Downloads", "📜 History", "📖 Learn ML", "💼 Interview Prep"
     ])
@@ -305,10 +290,7 @@ if file is not None:
         st.markdown("### 🔍 Dataset Overview")
         st.markdown("### 📊 Dataset Summary")
 
-        # =====================================================
         # PREMIUM DATASET METRIC CARDS
-        # =====================================================
-        
         rows = df.shape[0]
         cols = df.shape[1]
         missing = df.isnull().sum().sum()
@@ -358,9 +340,7 @@ if file is not None:
                 </div>
                 """, unsafe_allow_html=True)
 
-        # =====================================================
         # DATA LEAKAGE & DATA QUALITY DETECTION
-        # =====================================================
         st.markdown("---")
         st.subheader("🛡️ Data Leakage & Data Quality Detection")
         
@@ -425,10 +405,8 @@ if file is not None:
             st.error("⚠ Data Quality Issues Found")
         else:
             st.success("✅ No Data Leakage or Major Data Quality Issues Detected")
-        
-        # =====================================================
+
         # FINAL STATUS & HEALTH SCORE (PREMIUM UI)
-        # =====================================================
         
         # Calculate Data Health Score
         score = 100
@@ -436,7 +414,6 @@ if file is not None:
         score -= df.duplicated().sum() * 2
         score = max(0, min(100, score))
 
-        # Dynamic Styling based on Leakage
         # Dynamic Styling based on Leakage
         if leakage_found:
             status_html = """
@@ -712,9 +689,8 @@ if file is not None:
         
         for tip in tips:
             st.info(tip)
-        # =====================================================
+            
         # AI DATASET ANALYZER
-        # =====================================================
         st.markdown("---")
         st.header("🤖 AI Dataset Analyzer")
         
@@ -788,9 +764,7 @@ if file is not None:
             else:
                 st.info(tip)
 
-        # -----------------------------
     # TAB: PREPROCESSING
-    # -----------------------------
     with tab_prep:
         st.markdown("---")
         st.markdown("""
@@ -800,9 +774,7 @@ if file is not None:
 </div>
 """, unsafe_allow_html=True)
 
-        # =====================================================
         # DROP COLUMNS SECTION
-        # =====================================================
         st.markdown("""
 <div style="background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); padding: 20px; border-radius: 15px; margin-bottom: 25px;">
 <h4 style="color: #f87171; margin-top: 0; margin-bottom: 10px;">🗑️ Drop Unnecessary Columns</h4>
@@ -919,10 +891,8 @@ if file is not None:
                     
         st.markdown("---")
         st.markdown("#### 📌 Current Preprocessed Dataset View")
-        # =====================================================
+
         # CURRENT PREPROCESSED DATASET VIEW
-        # =====================================================
-        
         st.markdown("""
 <div style="background: linear-gradient(135deg, #111827, #1e293b); padding: 25px; border-radius: 20px; border-left: 8px solid #f59e0b; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-top: 20px; margin-bottom: 30px;">
 <h2 style="color: white; margin-top: 0; margin-bottom: 10px;">📌 Current Preprocessed Dataset View</h2>
@@ -931,14 +901,9 @@ if file is not None:
 """, unsafe_allow_html=True)
         st.dataframe(df.head(), use_container_width=True)
 
-        # =====================================================
         # AUTO FEATURE ENGINEERING
-        # =====================================================
         st.markdown("---")
         st.markdown("#### ✨ Auto Feature Engineering")
-        # =====================================================
-        # AUTO FEATURE ENGINEERING
-        # =====================================================
         st.markdown("""
 <div style="background: linear-gradient(135deg, #111827, #1e293b); padding: 25px; border-radius: 20px; border-left: 8px solid #ec4899; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-top: 40px; margin-bottom: 25px;">
 <h3 style="color: white; margin-top: 0; margin-bottom: 15px;">✨ Auto Feature Engineering</h3>
@@ -1027,10 +992,8 @@ if file is not None:
                     
                     st.session_state.df = df
                     st.dataframe(df.head(), use_container_width=True)
-
-        # -----------------------------
+-
     # TAB: MODEL TRAINING
-    # -----------------------------
     with tab_train:
         st.markdown("""
 <div style="background: linear-gradient(135deg, #111827, #1e293b); padding: 25px; border-radius: 20px; border-left: 8px solid #ef4444; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-top: 20px; margin-bottom: 30px;">
@@ -1058,11 +1021,7 @@ if file is not None:
             y = df[target]
             target_type = type_of_target(y)
             task = "Classification" if target_type in ["binary", "multiclass"] else "Regression"
-            
-            # ==========================================
-            # FIX: LABEL ENCODING FOR TARGET VARIABLE
-            # (Fixes XGBoost & LightGBM ValueError)
-            # ==========================================
+
             if task == "Classification":
                 from sklearn.preprocessing import LabelEncoder
                 le = LabelEncoder()
@@ -1098,10 +1057,8 @@ if file is not None:
             
             st.markdown("<hr style='border-color: rgba(255,255,255,0.05); margin-top: 20px; margin-bottom: 20px;'>", unsafe_allow_html=True)
             st.markdown("<h4 style='color: #a78bfa; margin-bottom: 10px;'>🚀 Step 2: Execution Settings</h4>", unsafe_allow_html=True)
-            
-            # =====================================
-            # TRAINING MODE
-            # =====================================
+  
+            # TRAINING MODEL
             training_mode = st.radio(
                 "Training Mode",
                 ["Normal Training", "Hyperparameter Tuning"],
@@ -1142,10 +1099,8 @@ if file is not None:
                     with st.spinner("Training Classification Models..."):
                         for i, (name, model) in enumerate(models.items()):
                             start_time = time.time()
-                            
-                            # ===============================
+                          
                             # Hyperparameter Tuning
-                            # ===============================
                             if training_mode == "Hyperparameter Tuning" and name == "Random Forest":
                                 params = {
                                     "n_estimators": [100, 200, 300, 500],
@@ -1197,19 +1152,7 @@ if file is not None:
                         
                         st.session_state.res = res
                         st.dataframe(res, use_container_width=True)
-
-
-
-
-
-
-
-
-                    
-                        
-                        # =====================================================
                         # MODEL COMPARISON DASHBOARD
-                        # =====================================================
                         st.markdown("""
 <div style="background: linear-gradient(135deg, #111827, #1e293b); padding: 25px; border-radius: 20px; border-left: 8px solid #8b5cf6; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-top: 35px; margin-bottom: 25px;">
 <h3 style="color: white; margin-top: 0; margin-bottom: 10px;">🏆 AI Model Comparison Dashboard</h3>
@@ -1273,10 +1216,7 @@ if file is not None:
                         
                         Performance : **{best_score:.4f}**
                         """)
-                        
-                        # =====================================================
                         # ML PIPELINE VISUALIZER
-                        # =====================================================
                         st.markdown("""
 <div style="background: linear-gradient(135deg, #111827, #1e293b); padding: 25px; border-radius: 20px; border-left: 8px solid #059669; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-top: 35px; margin-bottom: 25px;">
 <h3 style="color: white; margin-top: 0; margin-bottom: 10px;">🔄 AutoML Pipeline Flow</h3>
@@ -1302,17 +1242,11 @@ if file is not None:
                         
                         for i, step in enumerate(pipeline_steps, start=1):
                             st.success(f"{i}. {step}")
-                        
-                        # =====================================================
                         # PIPELINE COMPLETION
-                        # =====================================================
                         st.markdown("<h4 style='color: #a78bfa; margin-top: 20px;'>🚀 Pipeline Completion</h4>", unsafe_allow_html=True)
                         st.progress(100)
                         st.success("✅ AutoML Pipeline Completed Successfully")
-                        
-                        # =====================================================
                         # WORKFLOW TIMELINE
-                        # =====================================================
                         st.markdown("<h4 style='color: #60a5fa; margin-top: 20px;'>⏱ Workflow Timeline</h4>", unsafe_allow_html=True)
                         
                         timeline = pd.DataFrame({
@@ -1341,10 +1275,8 @@ if file is not None:
                             use_container_width=True,
                             hide_index=True
                         )
-                        
-                        # =====================================================
+
                         # AI MODEL RECOMMENDATION ENGINE
-                        # =====================================================
                         st.markdown("""
 <div style="background: linear-gradient(135deg, #111827, #1e293b); padding: 25px; border-radius: 20px; border-left: 8px solid #f59e0b; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-top: 35px; margin-bottom: 25px;">
 <h3 style="color: white; margin-top: 0; margin-bottom: 10px;">🤖 AI Model Recommendation</h3>
@@ -1395,12 +1327,7 @@ if file is not None:
                         except Exception as e:
                             st.warning(f"Recommendation unavailable : {e}")
 
-
-
-                            
-                        # =====================================================
                         # PERFORMANCE DASHBOARD
-                        # =====================================================
                         st.markdown("---")
                         st.subheader("📊 Model Performance Dashboard")
                         
@@ -1443,10 +1370,8 @@ if file is not None:
                                 st.warning("⚠ Dataset Drift Detected")
                         except Exception as e:
                             st.info(e)
-    
-                        # =====================================================
+
                         # CONFUSION MATRIX
-                        # =====================================================
                         st.markdown("---")
                         st.subheader("📊 Confusion Matrix")
                         
@@ -1458,10 +1383,8 @@ if file is not None:
                             st.pyplot(fig)
                         except Exception as e:
                             st.warning(f"Confusion Matrix Error : {e}")
-    
-                        # =====================================================
+
                         # ROC CURVE
-                        # =====================================================
                         st.markdown("---")
                         st.subheader("📈 ROC Curve")
                         
@@ -1485,10 +1408,8 @@ if file is not None:
                                 st.info("Selected model does not support probability prediction.")
                         except Exception as e:
                             st.warning(f"ROC Error : {e}")
-    
-                        # =====================================================
+
                         # PRECISION RECALL CURVE
-                        # =====================================================
                         st.markdown("---")
                         st.subheader("📉 Precision - Recall Curve")
                         
@@ -1506,20 +1427,16 @@ if file is not None:
                                     st.info("Only available for Binary Classification.")
                         except Exception as e:
                             st.warning(f"PR Curve Error : {e}")
-    
-                        # =====================================================
+                            
                         # EXPLAINABLE AI DASHBOARD
-                        # =====================================================
                         st.markdown("""
         <div style="background: linear-gradient(135deg, #111827, #1e293b); padding: 25px; border-radius: 20px; border-left: 8px solid #a855f7; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-top: 35px; margin-bottom: 25px;">
         <h3 style="color: white; margin-top: 0; margin-bottom: 10px;">🧠 Explainable AI Dashboard</h3>
         <p style="color: #9ca3af; font-size: 14px; margin: 0;">Deconstruct model predictions using SHAP values and feature importance metrics to understand the "why" behind the AI's decisions.</p>
         </div>
         """, unsafe_allow_html=True)
-                        
-                        # -----------------------------------------------------
+
                         # FEATURE IMPORTANCE
-                        # -----------------------------------------------------
                         importance_df = None
                         try:
                             if hasattr(best_model, "feature_importances_"):
@@ -1552,10 +1469,8 @@ if file is not None:
                                 st.info("Selected model does not support Feature Importance directly.")
                         except Exception as e:
                             st.warning(f"Feature Importance Error : {e}")
-        
-                        # -----------------------------------------------------
+
                         # SHAP SUMMARY
-                        # -----------------------------------------------------
                         try:
                             if hasattr(best_model, "feature_importances_"):
                                 st.markdown("<h4 style='color: #a78bfa; margin-top: 25px; margin-bottom: 15px;'>🧠 SHAP Global Explanation</h4>", unsafe_allow_html=True)
@@ -1579,10 +1494,8 @@ if file is not None:
                                 plt.close()
                         except Exception as e:
                             st.info(f"SHAP Summary not available : {e}")
-        
-                        # -----------------------------------------------------
+                            
                         # SHAP BAR
-                        # -----------------------------------------------------
                         try:
                             if hasattr(best_model, "feature_importances_"):
                                 st.markdown("<h4 style='color: #c084fc; margin-top: 25px; margin-bottom: 15px;'>📊 SHAP Feature Ranking</h4>", unsafe_allow_html=True)
@@ -1602,10 +1515,8 @@ if file is not None:
                                 plt.close()
                         except:
                             pass
-        
-                        # -----------------------------------------------------
+
                         # SINGLE PREDICTION SIMULATOR
-                        # -----------------------------------------------------
                         st.markdown("""
         <div style="background: linear-gradient(135deg, #111827, #1e293b); padding: 25px; border-radius: 20px; border-left: 8px solid #06b6d4; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-top: 35px; margin-bottom: 25px;">
         <h3 style="color: white; margin-top: 0; margin-bottom: 10px;">🎯 Single Prediction Simulator</h3>
@@ -1629,9 +1540,7 @@ if file is not None:
                         except Exception as e:
                             st.info(f"Prediction Simulator Error : {e}")
         
-                        # =====================================================
                         # SAVE EXPERIMENT HISTORY
-                        # =====================================================
                         if "experiment_history" not in st.session_state:
                             st.session_state.experiment_history = []
                         
@@ -1699,10 +1608,8 @@ if file is not None:
                         
                         st.session_state.res = res
                         st.dataframe(res, use_container_width=True)
-                        
-                        # =====================================================
+
                         # MODEL COMPARISON DASHBOARD (REGRESSION)
-                        # =====================================================
                         st.markdown("""
 <div style="background: linear-gradient(135deg, #111827, #1e293b); padding: 25px; border-radius: 20px; border-left: 8px solid #8b5cf6; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-top: 35px; margin-bottom: 25px;">
 <h3 style="color: white; margin-top: 0; margin-bottom: 10px;">🏆 AI Model Comparison Dashboard</h3>
@@ -1755,9 +1662,9 @@ if file is not None:
                         
                         Performance (RMSE) : **{best_score:.4f}**
                         """)
-                        # =====================================================
+                    
                         # ML PIPELINE VISUALIZER
-                        # =====================================================
+
                         st.markdown("""
 <div style="background: linear-gradient(135deg, #111827, #1e293b); padding: 25px; border-radius: 20px; border-left: 8px solid #059669; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-top: 35px; margin-bottom: 25px;">
 <h3 style="color: white; margin-top: 0; margin-bottom: 10px;">🔄 AutoML Pipeline Flow</h3>
@@ -1783,17 +1690,13 @@ if file is not None:
                         
                         for i, step in enumerate(pipeline_steps, start=1):
                             st.success(f"{i}. {step}")
-                        
-                        # =====================================================
+
                         # PIPELINE COMPLETION
-                        # =====================================================
                         st.markdown("<h4 style='color: #a78bfa; margin-top: 20px; margin-bottom: 15px;'>🚀 Pipeline Completion</h4>", unsafe_allow_html=True)
                         st.progress(100)
                         st.success("✅ AutoML Pipeline Completed Successfully")
-                        
-                        # =====================================================
+
                         # WORKFLOW TIMELINE
-                        # =====================================================
                         st.markdown("<h4 style='color: #60a5fa; margin-top: 20px; margin-bottom: 15px;'>⏱ Workflow Timeline</h4>", unsafe_allow_html=True)
                         
                         timeline = pd.DataFrame({
@@ -1822,10 +1725,8 @@ if file is not None:
                             use_container_width=True,
                             hide_index=True
                         )
-                        
-                        # =====================================================
+
                         # AI MODEL RECOMMENDATION ENGINE
-                        # =====================================================
                         st.markdown("""
 <div style="background: linear-gradient(135deg, #111827, #1e293b); padding: 25px; border-radius: 20px; border-left: 8px solid #f59e0b; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-top: 35px; margin-bottom: 25px;">
 <h3 style="color: white; margin-top: 0; margin-bottom: 10px;">🤖 AI Model Recommendation</h3>
@@ -1871,10 +1772,8 @@ if file is not None:
                                     
                         except Exception as e:
                             st.warning(f"Recommendation unavailable : {e}")
-
-                        # =====================================================
+                            
                         # PERFORMANCE DASHBOARD
-                        # =====================================================
                         st.markdown("""
 <div style="background: linear-gradient(135deg, #111827, #1e293b); padding: 25px; border-radius: 20px; border-left: 8px solid #34d399; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-top: 35px; margin-bottom: 25px;">
 <h3 style="color: white; margin-top: 0; margin-bottom: 10px;">📊 Model Performance Dashboard</h3>
@@ -1896,10 +1795,8 @@ if file is not None:
                             c4.metric("🎯 R² Score", f"{r2:.4f}")
                         except Exception as e:
                             st.warning(f"Performance metrics unavailable: {e}")
-    
-                        # =====================================================
+
                         # OVERFITTING & UNDERFITTING DETECTOR (REGRESSION)
-                        # =====================================================
                         st.markdown("""
 <div style="background: linear-gradient(135deg, #111827, #1e293b); padding: 25px; border-radius: 20px; border-left: 8px solid #f97316; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-top: 35px; margin-bottom: 25px;">
 <h3 style="color: white; margin-top: 0; margin-bottom: 10px;">📉 Overfitting & Underfitting Detector</h3>
@@ -1995,10 +1892,9 @@ if file is not None:
                             ⚠ Model is memorizing training data  
                             ✔ Retraining Recommended  
                             """)
-                                                                                                                        
-                        # =====================================================
+
                         # FEATURE IMPORTANCE (REGRESSION)
-                        # =====================================================
+
                         st.markdown("""
 <div style="background: linear-gradient(135deg, #111827, #1e293b); padding: 25px; border-radius: 20px; border-left: 8px solid #eab308; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-top: 35px; margin-bottom: 25px;">
 <h3 style="color: white; margin-top: 0; margin-bottom: 10px;">⭐ Feature Importance</h3>
@@ -2033,10 +1929,7 @@ if file is not None:
                             )
                             st.plotly_chart(fig, use_container_width=True)
 
-                            
-                # =====================================================
                 # INTERACTIVE PREDICTION STUDIO
-                # =====================================================
                 if "best_model" in st.session_state:
                     st.markdown("""
 <div style="background: linear-gradient(135deg, #111827, #1e293b); padding: 25px; border-radius: 20px; border-left: 8px solid #3b82f6; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-top: 35px; margin-bottom: 25px;">
@@ -2068,9 +1961,7 @@ if file is not None:
 </div>
 """, unsafe_allow_html=True)
                             
-                            # ===================================
                             # Prediction Confidence
-                            # ===================================
                             if hasattr(st.session_state.best_model, "predict_proba"):
                                 probability = st.session_state.best_model.predict_proba(input_df)[0]
                                 class_names = st.session_state.best_model.classes_
@@ -2101,10 +1992,8 @@ if file is not None:
                                 confidence = max(probability) * 100
                                 st.metric("🎯 Top Confidence Score", f"{confidence:.2f}%")
                                 st.progress(confidence / 100)
-                                
-                            # ===================================
+
                             # SHAP EXPLAINABILITY (Local)
-                            # ===================================
                             best_model = st.session_state.best_model
                             tree_models = (
                                 RandomForestClassifier, ExtraTreesClassifier, GradientBoostingClassifier, DecisionTreeClassifier,
@@ -2137,9 +2026,8 @@ if file is not None:
                                 
                         except Exception as e:
                             st.error(f"❌ Prediction failed: {e}")
-                        # =====================================================
+                            
                         # BATCH PREDICTION STUDIO
-                        # =====================================================
                         st.markdown("""
 <div style="background: linear-gradient(135deg, #111827, #1e293b); padding: 25px; border-radius: 20px; border-left: 8px solid #10b981; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-top: 35px; margin-bottom: 25px;">
 <h3 style="color: white; margin-top: 0; margin-bottom: 10px;">📤 Bulk / Batch Prediction</h3>
@@ -2245,10 +2133,8 @@ if file is not None:
                         
                         st.dataframe(res, use_container_width=True)
                         st.success(f"🏆 Best Model: **{best_model_name}** (Score: {best_score:.4f})")
-                        
-                        # =====================================================
+
                         # CLUSTERING PIPELINE VISUALIZER
-                        # =====================================================
                         st.markdown("""
 <div style="background: linear-gradient(135deg, #111827, #1e293b); padding: 25px; border-radius: 20px; border-left: 8px solid #06b6d4; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-top: 35px; margin-bottom: 25px;">
 <h3 style="color: white; margin-top: 0; margin-bottom: 10px;">🔄 Clustering Pipeline Flow</h3>
@@ -2273,10 +2159,8 @@ if file is not None:
                         st.markdown("<h4 style='color: #60a5fa; margin-top: 20px; margin-bottom: 15px;'>🚀 Pipeline Completion</h4>", unsafe_allow_html=True)
                         st.progress(100)
                         st.success("✅ Unsupervised AutoML Pipeline Completed Successfully")
-                        
-                        # =====================================================
+
                         # PCA CLUSTER VISUALIZATION
-                        # =====================================================
                         st.markdown("""
 <div style="background: linear-gradient(135deg, #111827, #1e293b); padding: 25px; border-radius: 20px; border-left: 8px solid #8b5cf6; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-top: 35px; margin-bottom: 25px;">
 <h3 style="color: white; margin-top: 0; margin-bottom: 10px;">🗺️ Cluster Visualization (PCA)</h3>
@@ -2315,9 +2199,7 @@ if file is not None:
                     else:
                         st.error("❌ Clustering Failed. Please ensure the dataset contains sufficient numeric variance.")
 
-                    # =====================================================
-                    # 🧠 AI DECISION EXPLANATION (100% Dynamic)
-                    # =====================================================
+                    # AI DECISION EXPLANATION (100% Dynamic)
                     st.markdown("<br>", unsafe_allow_html=True)
                     st.markdown("### 🧠 AI Decision Explanation")
                     st.markdown("---")
@@ -2437,13 +2319,7 @@ if file is not None:
                     except Exception as e:
                         st.warning("⚠️ AI Explanation module is currently analyzing the model architecture. Please run a prediction first.")
 
-                        
-    
-    
-    
-    # -----------------------------
     # TAB: DOWNLOAD CENTER
-    # -----------------------------
     with tab_download:
         st.markdown("""
         <div style="background: linear-gradient(135deg, #111827, #1e293b); padding: 25px; border-radius: 20px; border-left: 8px solid #3b82f6; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-top: 20px; margin-bottom: 30px;">
@@ -2451,10 +2327,8 @@ if file is not None:
         <p style="color: #9ca3af; font-size: 15px; margin: 0;">Export your trained AI models, preprocessing pipelines, generated reports, and cleaned datasets for production deployment.</p>
         </div>
         """, unsafe_allow_html=True)
-        
-        # =============================
+
         # MODEL DOWNLOAD
-        # =============================
         st.markdown("<h4 style='color: #60a5fa; margin-bottom: 15px;'>🤖 1. Best Model File (.pkl)</h4>", unsafe_allow_html=True)
         
         if "best_model" in st.session_state:
@@ -2470,10 +2344,8 @@ if file is not None:
                 )
         else:
             st.info("ℹ️ Train a model first to unlock this download.")
-            
-        # =============================
+
         # PIPELINE DOWNLOAD
-        # =============================
         st.markdown("<h4 style='color: #a78bfa; margin-top: 20px; margin-bottom: 15px;'>⚙️ 2. Production Pipeline (.pkl)</h4>", unsafe_allow_html=True)
         if "best_model" in st.session_state and "selected_features" in st.session_state:
             pipeline = {
@@ -2492,10 +2364,8 @@ if file is not None:
                 )
         else:
             st.info("ℹ️ Pipeline not available. Please train a supervised model.")
-            
-        # =============================
+
         # TRAIN DATA
-        # =============================
         st.markdown("<h4 style='color: #34d399; margin-top: 20px; margin-bottom: 15px;'>📊 3. Training Dataset (.csv)</h4>", unsafe_allow_html=True)
         try:
             if "X_train" in st.session_state:
@@ -2509,10 +2379,8 @@ if file is not None:
                 st.info("ℹ️ Training dataset not available.")
         except Exception:
             st.info("ℹ️ Training dataset not available.")
-            
-        # =============================
+
         # TEST DATA
-        # =============================
         st.markdown("<h4 style='color: #f472b6; margin-top: 20px; margin-bottom: 15px;'>🧪 4. Testing Dataset (.csv)</h4>", unsafe_allow_html=True)
         try:
             if "X_test" in st.session_state:
@@ -2527,9 +2395,7 @@ if file is not None:
         except Exception:
             st.info("ℹ️ Testing dataset not available.")
             
-        # =============================
         # PREPROCESSED DATASET
-        # =============================
         st.markdown("<h4 style='color: #fbbf24; margin-top: 20px; margin-bottom: 15px;'>🗂 5. Preprocessed Dataset (.csv)</h4>", unsafe_allow_html=True)
         try:
             csv = df.to_csv(index=False).encode("utf-8")
@@ -2537,9 +2403,7 @@ if file is not None:
         except:
             st.info("ℹ️ Dataset not available.")
             
-        # =============================
         # MODEL LEADERBOARD
-        # =============================
         st.markdown("<h4 style='color: #06b6d4; margin-top: 20px; margin-bottom: 15px;'>🏆 6. Model Leaderboard (.csv)</h4>", unsafe_allow_html=True)
         try:
             if "res" in st.session_state:
@@ -2550,10 +2414,8 @@ if file is not None:
                 st.info("ℹ️ Leaderboard not available.")
         except:
             st.info("ℹ️ Leaderboard not available.")
-            
-        # =============================
+
         # SELECTED FEATURES
-        # =============================
         st.markdown("<h4 style='color: #c084fc; margin-top: 20px; margin-bottom: 15px;'>⭐ 7. Selected Features (.csv)</h4>", unsafe_allow_html=True)
         try:
             if "selected_features" in st.session_state:
@@ -2568,10 +2430,8 @@ if file is not None:
         st.markdown("<br>", unsafe_allow_html=True)
         st.success("✅ Download Center Ready")
         st.markdown("---")
-    
-        # =====================================================
+
         # PDF REPORT GENERATOR
-        # =====================================================
         st.markdown("""
         <div style="background: linear-gradient(135deg, #111827, #1e293b); padding: 25px; border-radius: 20px; border-left: 8px solid #e11d48; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-top: 35px; margin-bottom: 25px;">
         <h3 style="color: white; margin-top: 0; margin-bottom: 10px;">📄 AI Project Report Generator</h3>
@@ -2637,10 +2497,8 @@ if file is not None:
                     leading=20,
                 )
                 story = []
-                
-                # =====================================================
+
                 # SESSION STATE VARIABLES
-                # =====================================================
                 task = st.session_state.get("task", "")
                 best_model = st.session_state.get("best_model", None)
                 best_model_name = st.session_state.get("best_model_name", "Not Available")
@@ -2654,10 +2512,8 @@ if file is not None:
                 test_score = st.session_state.get("test_score", None)
                 X_train = st.session_state.get("X_train", None)
                 y_train = st.session_state.get("y_train", None)
-        
-                # =====================================================
+
                 # TRAIN / TEST SCORE
-                # =====================================================
                 try:
                     if (best_model is not None and X_train is not None and y_train is not None):
                         train_score = best_model.score(X_train, y_train)
@@ -2682,9 +2538,8 @@ if file is not None:
                 story.append(Spacer(1,15))
                 story.append(Paragraph("<b>Generated Automatically by Neuronix AI</b>", normal_style))
                 story.append(PageBreak())
-                # =====================================================
+
                 # DATASET SUMMARY
-                # =====================================================
                 dashboard = [
                     ["Metric", "Value"],
                     ["Rows", str(df.shape[0])],
@@ -2705,10 +2560,8 @@ if file is not None:
                 ]))
                 story.append(table)
                 story.append(Spacer(1, 20))
-                
-                # =====================================================
+
                 # EXECUTIVE SUMMARY
-                # =====================================================
                 story.append(Paragraph("Executive Summary", heading_style))
                 story.append(Spacer(1, 15))
                 summary = f"""
@@ -2731,10 +2584,8 @@ if file is not None:
                 """
                 story.append(Paragraph(summary, normal_style))
                 story.append(PageBreak())
-                
-                # =====================================================
+
                 # DATASET HEALTH
-                # =====================================================
                 story.append(Paragraph("Dataset Health Report", heading_style))
                 story.append(Spacer(1, 20))
                 
@@ -2768,10 +2619,8 @@ if file is not None:
                 ]))
                 story.append(table)
                 story.append(PageBreak())
-                
-                # =====================================================
+
                 # AI RECOMMENDATION
-                # =====================================================
                 story.append(Paragraph("AI Recommendations", heading_style))
                 story.append(Spacer(1, 20))
                 
@@ -2793,10 +2642,8 @@ if file is not None:
                     story.append(Paragraph(r, normal_style))
                     story.append(Spacer(1, 5))
                 story.append(PageBreak())
-                
-                # =====================================================
+
                 # DATASET STATISTICS
-                # =====================================================
                 story.append(Paragraph("Statistical Analysis", heading_style))
                 story.append(Spacer(1, 15))
                 
@@ -2820,10 +2667,8 @@ if file is not None:
                 ]))
                 story.append(table)
                 story.append(PageBreak())
-                
-                # =====================================================
+
                 # TABLE OF CONTENTS
-                # =====================================================
                 story.append(Paragraph("Table of Contents", styles["Heading1"]))
                 story.append(Spacer(1, 20))
                 toc = [
@@ -2848,10 +2693,8 @@ if file is not None:
                     story.append(Paragraph(item, normal_style))
                     story.append(Spacer(1, 5))
                 story.append(PageBreak())
-                
-                # =====================================================
+
                 # PROJECT INFORMATION
-                # =====================================================
                 story.append(Paragraph("Project Information", heading_style))
                 story.append(Spacer(1, 20))
                 info = [
@@ -2877,10 +2720,8 @@ if file is not None:
                 ]))
                 story.append(table)
                 story.append(PageBreak())
-                
-                # =====================================================
+
                 # SAVED CHARTS INCLUSION
-                # =====================================================
                 story.append(Paragraph("Histogram", heading_style))
                 story.append(Spacer(1, 20))
                 if os.path.exists("histogram.png"):
@@ -2904,10 +2745,8 @@ if file is not None:
                 if os.path.exists("scatter.png"):
                     story.append(RLImage("scatter.png", width=450, height=300))
                 story.append(PageBreak())
-                
-                # =====================================================
+
                 # MISSING VALUE ANALYSIS
-                # =====================================================
                 story.append(Paragraph("Missing Value Analysis", heading_style))
                 story.append(Spacer(1, 20))
                 missing_table = [["Column", "Missing Count"]]
@@ -2926,10 +2765,8 @@ if file is not None:
                 ]))
                 story.append(table)
                 story.append(PageBreak())
-                
-                # =====================================================
+
                 # PREDICTION RESULT
-                # =====================================================
                 story.append(Paragraph("Interactive Prediction Result", heading_style))
                 story.append(Spacer(1, 20))
                 try:
@@ -2943,9 +2780,7 @@ if file is not None:
                     pass
                 story.append(PageBreak())
                 
-                # =====================================================
                 # CONFUSION MATRIX
-                # =====================================================
                 if st.session_state.get("task") == "Classification":
                     story.append(Paragraph("Confusion Matrix", heading_style))
                     story.append(Spacer(1, 20))
@@ -2963,9 +2798,8 @@ if file is not None:
                         except Exception:
                             pass
                     story.append(PageBreak())
-                # =====================================================
+                    
                 # AI RECOMMENDATIONS
-                # =====================================================
                 story.append(Paragraph("AI Recommendations", heading_style))
                 story.append(Spacer(1, 20))
                 recommendations = [
@@ -2981,10 +2815,8 @@ if file is not None:
                     story.append(Paragraph(item, normal_style))
                     story.append(Spacer(1, 5))
                 story.append(PageBreak())
-    
-                # =====================================================
+
                 # SAVE CHARTS FOR PDF
-                # =====================================================
                 numeric_cols = df.select_dtypes(include=np.number).columns
                 
                 # Histogram
@@ -3031,9 +2863,7 @@ if file is not None:
                     plt.savefig("scatter.png", dpi=300)
                     plt.close()
             
-                # =====================================================
                 # GENERATE DOCUMENT
-                # =====================================================
                 pdf.build(
                     story,
                     onFirstPage=add_header_footer,
@@ -3054,9 +2884,7 @@ if file is not None:
                     use_container_width=True,
                     type="primary"
                 )
-# -----------------------------
     # TAB: EXPERIMENT HISTORY
-    # -----------------------------
     with tab_history:
         st.markdown("""
 <div style="background: linear-gradient(135deg, #111827, #1e293b); padding: 25px; border-radius: 20px; border-left: 8px solid #14b8a6; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-top: 20px; margin-bottom: 30px;">
@@ -3094,12 +2922,8 @@ if file is not None:
                     st.session_state.experiment_history = []
                     st.success("✅ History Cleared Successfully.")
                     st.rerun()
-        # =====================================================
-        # ML GLOSSARY
-        # =====================================================
-    # -----------------------------
+                    
     # TAB: ML GLOSSARY
-    # -----------------------------
     with tab_glossary:
         st.markdown("""
 <div style="background: linear-gradient(135deg, #111827, #1e293b); padding: 25px; border-radius: 20px; border-left: 8px solid #f43f5e; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-top: 20px; margin-bottom: 30px;">
@@ -3191,11 +3015,7 @@ if file is not None:
         st.markdown("<br>", unsafe_allow_html=True)
         st.success("🎓 **Pro Tip:** Learn and master one concept from this list every day to rapidly improve your Data Science and Machine Learning skills!")
 
-
-        
-# -----------------------------
     # TAB: AI INTERVIEW PREPARATION
-    # -----------------------------
     with tab_interview:
         st.markdown("""
 <div style="background: linear-gradient(135deg, #111827, #1e293b); padding: 25px; border-radius: 20px; border-left: 8px solid #8b5cf6; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-top: 20px; margin-bottom: 30px;">
@@ -3264,9 +3084,6 @@ if file is not None:
         st.markdown("---")
         st.info("📚 **Tip:** Practice these questions before placements and viva. Explaining these concepts out loud is the best way to prepare!")
 
-
-
-
 else:
     # Default st.info ko hatakar premium HTML Alert Box lagaya gaya hai
     html_alert = """
@@ -3276,8 +3093,7 @@ else:
 </div>
 """
     st.markdown(html_alert, unsafe_allow_html=True)
-    
-    # Bina kisi space/indentation ke HTML taaki Streamlit isey code block na samjhe
+
     html_cards = """
 <div style="margin-top: 35px; margin-bottom: 20px;">
 <h3 style="color: #94a3b8; text-align: center; margin-bottom: 30px; font-weight: 600; letter-spacing: 1px;">⚡ EXPLORE THE NEURONIX ARCHITECTURE</h3>
